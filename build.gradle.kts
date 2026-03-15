@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.jetbrains:annotations:26.1.0")
     antlr("org.antlr:antlr4:4.13.1")
     implementation("org.antlr:antlr4-runtime:4.13.1")
     implementation(project(":stdlib"))
