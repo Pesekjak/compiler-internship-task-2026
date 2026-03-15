@@ -1,7 +1,7 @@
 package org.example
 
-import MiniKotlinLexer
-import MiniKotlinParser
+import compiler.MiniKotlinLexer
+import compiler.MiniKotlinParser
 import org.antlr.v4.runtime.CharStreams
 import org.antlr.v4.runtime.CommonTokenStream
 import org.example.compiler.CompilationResult

@@ -1,5 +1,7 @@
 grammar MiniKotlin;
 
+@header { package compiler; }
+
 // Parser Rules
 
 program
