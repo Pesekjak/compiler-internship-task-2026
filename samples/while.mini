@@ -1,0 +1,20 @@
+fun multiply(a: Int, b: Int): Int {
+    return a * b
+}
+
+fun power(base: Int, exp: Int): Int {
+    var result: Int = 1
+    var i: Int = 0
+
+    while (i < exp) {
+        result = multiply(result, base)
+        i = i + 1
+    }
+
+    return result
+}
+
+fun main(): Unit {
+    var p: Int = power(2, 3)
+    println(p)
+}

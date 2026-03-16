@@ -1,0 +1,46 @@
+fun testArithmetic(a: Int, b: Int): Int {
+    var sum: Int = a + b
+    var diff: Int = a - b
+    var prod: Int = a * b
+    var quot: Int = a / b
+    var rem: Int = a % b
+    return (sum + diff) * (quot - rem)
+}
+
+fun testLogic(x: Int, y: Int): Boolean {
+    var isGreater: Boolean = x > y
+    var isLessEq: Boolean = x <= y
+    var complexLogic: Boolean = isGreater && !isLessEq
+    var withOr: Boolean = complexLogic || (x == y)
+    return withOr
+}
+
+fun checkStrings(s1: String, s2: String): Boolean {
+    return s1 == s2
+}
+
+fun main(): Unit {
+    var mathResult: Int = testArithmetic(10, 3)
+    println(mathResult)
+
+    var logicResult: Boolean = testLogic(5, 2)
+    println(logicResult)
+
+    var numA: Int = 1000
+    var numB: Int = 1000
+    var isNumSame: Boolean = numA == numB
+    println(isNumSame)
+
+    var isNumDiff: Boolean = numA != 500
+    println(isNumDiff)
+
+    var strA: String = "MiniKotlin"
+    var strB: String = "MiniKotlin"
+    var strC: String = "Java"
+
+    var isStrSame: Boolean = checkStrings(strA, strB)
+    println(isStrSame)
+
+    var isStrDiff: Boolean = strA != strC
+    println(isStrDiff)
+}

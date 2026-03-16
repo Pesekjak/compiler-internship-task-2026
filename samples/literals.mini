@@ -1,0 +1,11 @@
+fun main(): Unit {
+    var i: Int = 42
+    var s: String = "Hello MiniKotlin"
+    var bTrue: Boolean = true
+    var bFalse: Boolean = false
+
+    println(i)
+    println(s)
+    println(bTrue)
+    println(bFalse)
+}
