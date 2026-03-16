@@ -1,0 +1,15 @@
+fun dummyInt(d: Int): Int {
+    return 0
+}
+
+fun main(): Int {
+    var x: Int = 0
+    if (x == 0) {
+        if (x == 0) {
+            var r: Int = dummyInt(0)
+            return r
+        }
+    }
+    println("This should not run if x is 0")
+    return 1
+}

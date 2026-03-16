@@ -95,9 +95,10 @@ public class CpsGenerator {
     }
 
     private String generateStatements(IfStmt ifStmt, List<Statement> rest) {
+        // TODO the rest should be wrapped in a single continuation as
+        //  now it grows exponentially with each if else statement.
         List<Statement> thenBlock = new ArrayList<>(ifStmt.thenBlock());
         thenBlock.addAll(rest);
-
         List<Statement> elseBlock = new ArrayList<>(ifStmt.elseBlock());
         elseBlock.addAll(rest);
 
@@ -115,6 +116,8 @@ public class CpsGenerator {
         List<Statement> bodyWithContinue = new ArrayList<>(whileStmt.body());
         // at the end call itself recursively
         // TODO possibly improve this, use special expr statement for the jump?
+        // TODO every iteration of the while block adds a frame to JVM stack,
+        //  this will throw stack overflow.
         bodyWithContinue.add(new ExprStmt(new IdentifierExpr(loopRef + ".accept(null)")));
 
         StringBuilder sb = new StringBuilder();

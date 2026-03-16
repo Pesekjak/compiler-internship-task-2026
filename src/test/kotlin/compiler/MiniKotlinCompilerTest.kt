@@ -12,6 +12,7 @@ import java.nio.file.Paths
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import kotlin.test.assertTrue
+import kotlin.test.assertFalse
 
 class MiniKotlinCompilerTest {
 
@@ -99,6 +100,12 @@ class MiniKotlinCompilerTest {
         for (i in expectedLines.indices) {
             assertEquals(expectedLines[i], lines[i], "Mismatch at line ${i+1}")
         }
+    }
+
+    @Test
+    fun `return properly exits the method`() {
+        val output = compileAndRun("samples/exit.mini")
+        assertFalse(output.contains("This should not run if x is 0"), "Expected output to be empty, but got: $output")
     }
 
 }
