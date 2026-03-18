@@ -2,6 +2,15 @@
 
 This is an internship assignment for implementing a CPS-style (Continuation-Passing Style) compiler from MiniKotlin (a subset of Kotlin) to Java.
 
+## Implementation Details
+Instead of direct String generation from the `ProgramContext` parsed by ANTLR, I build my own AST first, containing
+only the relevant nodes for code generation, see [AstBuilder](https://github.com/Pesekjak/compiler-internship-task-2026/blob/master/src/main/java/compiler/ast/AstBuilder.java). This makes traversing the program and generating the CPS Java code easier, see [CpsGenerator](https://github.com/Pesekjak/compiler-internship-task-2026/blob/master/src/main/java/compiler/CpsGenerator.java). 
+Local variables are wrapped in single array elements to allow variable assignments in nested lambdas, as variables in Java lambdas need to be effectively final. `while` loops are lowered into self referencing recursive lambdas.
+
+## Known limitations
+* Because the `while` loop lambdas call themselves recursively, deep recursion in while loops will eventually cause stack overflow. This could be fixed using the trampoline pattern, but because of time constraints I was not able to implement it. 
+* Right now any code following `if-else` block will be duplicated in both branches. This will cause the program size to grow exponentially in such cases. This could be optimized with both branches using shared continuation for the rest of the program, but I was not able to implement this in time.
+
 ## Overview
 
 The goal is to implement a compiler that translates MiniKotlin source code into Java, where all functions are expressed using continuation-passing style.
